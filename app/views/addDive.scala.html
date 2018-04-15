@@ -1,0 +1,19 @@
+@(diveForm: Form[Dive])(implicit request: MessagesRequestHeader)
+
+@import helper._
+
+@main("Add a dive") {
+    <div class="form">
+
+        <div>
+            @form(action = routes.LogbookController.add(), args = 'id -> "diveForm") {
+                <fieldset>
+                    <legend>Add a dive</legend>
+                    @inputText(diveForm("diveSite"), '_label -> "Dive site", 'placeholder -> "Enter dive site", '_showConstraints -> false, 'size -> 30)
+                </fieldset>
+
+                <input type="submit" id="add" value="Add" class="submit-button"/>
+            }
+        </div>
+    </div>
+}
