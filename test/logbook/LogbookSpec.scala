@@ -1,9 +1,9 @@
 package logbook
 
 import models.Dive
-import org.specs2.mutable.Specification
+import org.scalatest.WordSpec
 
-class LogbookSpec extends Specification {
+class LogbookSpec extends WordSpec {
 
   /*
   Removed until I work out a way of auto starting mongo or perhaps using a stub?

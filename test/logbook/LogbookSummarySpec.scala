@@ -1,9 +1,10 @@
 package logbook
 
-import models.{LogbookSummary, Dive}
-import org.specs2.mutable.Specification
+import models.{Dive, LogbookSummary}
+import org.scalatest.WordSpec
+import org.scalatest.Matchers._
 
-class LogbookSummarySpec extends Specification {
+class LogbookSummarySpec extends WordSpec {
 
   "A dive summary" should {
 
@@ -11,35 +12,35 @@ class LogbookSummarySpec extends Specification {
 
       val diveLogs = List(Dive(bottomTime = 46), Dive(bottomTime = 52))
       val summary = LogbookSummary(diveLogs)
-      summary.totalBottomTime must_== 98
+      summary.totalBottomTime shouldEqual 98
     }
 
     "provide average depth" in {
 
       val diveLogs = Dive(maxDepth = 15.0) :: Dive(maxDepth = 35.3) :: Dive(maxDepth = 40.6) :: Nil
       val summary = LogbookSummary(diveLogs)
-      summary.avgDepth must_== BigDecimal(30.3)
+      summary.avgDepth shouldEqual BigDecimal(30.3)
     }
 
     "provide max depth" in {
 
       val diveLogs = Dive(maxDepth = 15.0) :: Dive(maxDepth = 35.3) :: Dive(maxDepth = 40.6) :: Nil
       val summary = LogbookSummary(diveLogs)
-      summary.maxDepth must_== BigDecimal(40.6)
+      summary.maxDepth shouldEqual BigDecimal(40.6)
     }
 
     "provide average bottom time" in {
 
       val diveLogs = Dive(bottomTime = 46) :: Dive(bottomTime = 52) :: Dive(bottomTime = 27) :: Nil
       val summary = LogbookSummary(diveLogs)
-      summary.avgBottomTime must_== 41
+      summary.avgBottomTime shouldEqual 41
     }
 
     "provide max bottom time" in {
 
       val diveLogs = Dive(bottomTime = 46) :: Dive(bottomTime = 52) :: Dive(bottomTime = 27) :: Nil
       val summary = LogbookSummary(diveLogs)
-      summary.maxBottomTime must_== 52
+      summary.maxBottomTime shouldEqual 52
     }
   }
 
